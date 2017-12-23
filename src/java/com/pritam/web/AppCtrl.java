@@ -7,7 +7,7 @@ package com.pritam.web;
 
 import com.pritam.dao.ToiDAO;
 import static com.pritam.web.AppConstant.*;
-import com.pritam.web.model.NewsList;
+import com.pritam.model.NewsList;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;

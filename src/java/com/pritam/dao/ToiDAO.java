@@ -1,7 +1,7 @@
 package com.pritam.dao;
 
 import com.pritam.web.AppConstant;
-import com.pritam.web.model.NewsList;
+import com.pritam.model.NewsList;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -44,222 +44,7 @@ public class ToiDAO {
 		}
 	}
 
-
-
-	public void insertNewTOIline(ArrayList<HashMap<String, Object>> aList) throws SQLException {
-		// TODO Auto-generated method stub
-
-		connect();
-		PreparedStatement statement = null;
-		for(int i = 0;i < aList.size();i++)
-		{
-			HashMap<String,Object> hm = aList.get(i);
-
-			String sql = "SELECT id FROM NewsWeb.TOI where articlelink ='"+hm.get("articlelink").toString()+"'and heading1 ='"+hm.get("heading1").toString()+"' ";;
-			Statement stat = jdbcConnection.createStatement();
-			ResultSet resultSet = stat.executeQuery(sql);
-			Double id = 0.0d;
-			while (resultSet.next()) {
-				id =  resultSet.getDouble("id");
-			}
-
-			if(id > 0){
-
-				String image = hm.get("image").toString();
-				if(!(image != null && image.length() > 2 )){
-					image = "";
-				}
-				String data = hm.get("data").toString();
-				if(!(data != null && data.length() > 0 )){
-					data = "";
-				}
-				String cat = hm.get("cat").toString();
-				if(!(cat != null && cat.length() > 0 )){
-					cat = "";
-				}
-				String auth_detail = hm.get("auth_detail").toString();
-				if(!(auth_detail != null && auth_detail.length() > 0 )){
-					auth_detail = "";
-				}
-				String time_cptn = hm.get("time_cptn").toString();
-				if(!(time_cptn != null && time_cptn.length() > 0 )){
-					time_cptn = "";
-				}
-
-				sql = " UPDATE NewsWeb.TOI SET image = ? , cat = ? , data = ?, auth_detail=? , time_cptn = ? where id = ? ";		
-
-				System.out.println("UPDATE--> "+i + " "+id + " " +sql);
-
-				//PreparedStatement pstmt
-				statement = jdbcConnection.prepareStatement(sql);
-				statement.setString(1, image ); 
-				statement.setString(2, cat ); 
-				statement.setString(3, data ); 
-				statement.setString(4, auth_detail ); 
-				statement.setString(5, time_cptn ); 
-				statement.setDouble(6, id); 
-				boolean rowUpdated = statement.executeUpdate() > 0;
-				statement.close();
-
-			} else {
-				sql = "INSERT INTO `NewsWeb`.`TOI` (`articlelink`, `heading1`, `image`, `data`, `cat`, `auth_detail`, `time_cptn`, `timestamp`) VALUES ( ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP )";
-				//		+ " ON DUPLICATE KEY UPDATE articlelink ='"+hm.get("articlelink").toString()+"', heading1 ='"+hm.get("heading1").toString()+"' ";
-
-				System.out.println("INSERT--> "+i + " "+id + " " +sql);
-
-				statement = jdbcConnection.prepareStatement(sql);
-				statement.setString(1, hm.get("articlelink").toString());
-				statement.setString(2,hm.get("heading1").toString());
-				String s = hm.get("image").toString();
-				if(s != null && s.length() > 2 ){
-					statement.setString(3, s);
-				} else {
-					statement.setString(3, null);
-				}
-				statement.setString(4, hm.get("data").toString());
-				s = hm.get("cat").toString();
-				if(s != null && s.length() > 0 ){
-					statement.setString(5, s);
-				} else {
-					statement.setString(5, "");
-				}
-				s = hm.get("auth_detail").toString();
-				if(s != null && s.length() > 0 ){
-					statement.setString(6, s);
-				} else {
-					statement.setString(6, "");
-				}
-				s = hm.get("time_cptn").toString();
-				if(s != null && s.length() > 0 ){
-					statement.setString(7, s);
-				} else {
-					statement.setString(7, "");
-				}
-
-				boolean rowInserted = statement.executeUpdate() > 0;
-				statement.close();
-			}
-
-
-		}
-
-		disconnect();
-	}
-
-
-    public void insertNewTOI(ArrayList<HashMap<String, Object>> aList) throws SQLException {
-		// TODO Auto-generated method stub
-
-		connect();
-		PreparedStatement statement = null;
-		for(int i = 0;i < aList.size();i++)
-		{
-			HashMap<String,Object> hm = aList.get(i);
-
-			String sql = "SELECT id FROM NewsWeb.TOI where articlelink ='"+hm.get("articlelink").toString()+"'and heading1 ='"+hm.get("heading1").toString()+"' ";;
-			Statement stat = jdbcConnection.createStatement();
-			ResultSet resultSet = stat.executeQuery(sql);
-			Double id = 0.0d;
-			while (resultSet.next()) {
-				id =  resultSet.getDouble("id");
-			}
-
-			if(id > 0){
-
-                                try{
-                                    
-				String image = hm.get("image").toString();
-				if(!(image != null && image.length() > 2 )){
-					image = "";
-				}
-				String data = hm.get("data").toString();
-				if(!(data != null && data.length() > 0 )){
-					data = "";
-				}
-				String cat = hm.get("cat").toString();
-				if(!(cat != null && cat.length() > 0 )){
-					cat = "";
-				}
-				String auth_detail = hm.get("auth_detail").toString();
-				if(!(auth_detail != null && auth_detail.length() > 0 )){
-					auth_detail = "";
-				}
-				String time_cptn = hm.get("time_cptn").toString();
-				if(!(time_cptn != null && time_cptn.length() > 0 )){
-					time_cptn = "";
-				}
-
-				sql = " UPDATE NewsWeb.TOI SET image = ? , cat = ? , data = ?, auth_detail=? , time_cptn = ? , time_date = ? where id = ? ";		
-
-				System.out.println("UPDATE--> "+i + " "+id + " " +sql);
-
-				//PreparedStatement pstmt
-				statement = jdbcConnection.prepareStatement(sql);
-				statement.setString(1, image ); 
-				statement.setString(2, cat ); 
-				statement.setString(3, data ); 
-				statement.setString(4, auth_detail ); 
-				statement.setString(5, time_cptn ); 
-				statement.setString(6, hm.get("time_date").toString() ); 
-				statement.setDouble(7, id); 
-				boolean rowUpdated = statement.executeUpdate() > 0;
-				statement.close();
-                                 } catch(Exception e){
-                                    System.out.println("\n"+i + " --> "+e.toString());
-                                }
-
-			} else {
-				
-                                try{
-                                sql = "INSERT INTO `NewsWeb`.`TOI` (`articlelink`, `heading1`, `image`, `data`, `cat`, `auth_detail`, `time_cptn`, `time_date` , `timestamp`) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP )";
-				//		+ " ON DUPLICATE KEY UPDATE articlelink ='"+hm.get("articlelink").toString()+"', heading1 ='"+hm.get("heading1").toString()+"' ";
-
-				System.out.println("INSERT--> "+i + " "+id + " " +sql);
-
-				statement = jdbcConnection.prepareStatement(sql);
-				statement.setString(1, hm.get("articlelink").toString());
-				statement.setString(2,hm.get("heading1").toString());
-				String s = hm.get("image").toString();
-				if(s != null && s.length() > 2 ){
-					statement.setString(3, s);
-				} else {
-					statement.setString(3, null);
-				}
-				statement.setString(4, hm.get("data").toString());
-				s = hm.get("cat").toString();
-				if(s != null && s.length() > 0 ){
-					statement.setString(5, s);
-				} else {
-					statement.setString(5, "");
-				}
-				s = hm.get("auth_detail").toString();
-				if(s != null && s.length() > 0 ){
-					statement.setString(6, s);
-				} else {
-					statement.setString(6, "");
-				}
-				s = hm.get("time_cptn").toString();
-				if(s != null && s.length() > 0 ){
-					statement.setString(7, s);
-				} else {
-					statement.setString(7, "");
-				}
-
-				statement.setString(8, hm.get("time_date").toString() ); 
-				
-				boolean rowInserted = statement.executeUpdate() > 0;
-				statement.close();
-                                } catch(Exception e){
-                                    System.out.println("\n"+i + " --> "+e.toString());
-                                }
-			}
-
-
-		}
-
-		disconnect();
-	}
-
+  
 
     public ArrayList<HashMap<String,Object>> listAllTOI(String search) throws SQLException {
 		ArrayList<HashMap<String,Object>>  alist = new ArrayList<>();
@@ -453,6 +238,145 @@ public class ToiDAO {
 		return alist;
        
     }
+
+    public HashMap<String, Object> insertNewTOI (ArrayList<HashMap<String, Object>> aList) throws SQLException {
+		// TODO Auto-generated method stub
+                HashMap<String,Object> result = new HashMap<>(); 
+                int new_insert = 0, update = 0, no_change=0, exception_count =0; 
+                
+		connect();
+		PreparedStatement statement = null;
+		for(int i = 0;i < aList.size();i++)
+		{
+			HashMap<String,Object> hm = aList.get(i);
+
+			String time_cptn_update = null;
+			String sql = "SELECT id , time_cptn FROM NewsWeb.TOI where heading1 ='"+hm.get("heading1").toString()+"' ";;
+			Statement stat = jdbcConnection.createStatement();
+			ResultSet resultSet = stat.executeQuery(sql);
+                        
+			Double id = 0.0d;
+			while (resultSet.next()) {
+				id =  resultSet.getDouble("id");
+                                time_cptn_update = resultSet.getString("time_cptn");
+			}
+                        stat.close();
+
+						if(id > 0){
+
+                                try{
+                                    
+				String image = hm.get("image").toString();
+				if(!(image != null && image.length() > 2 )){
+					image = "";
+				}
+				String data = hm.get("data").toString();
+				if(!(data != null && data.length() > 0 )){
+					data = "";
+				}
+				String cat = hm.get("cat").toString();
+				if(!(cat != null && cat.length() > 0 )){
+					cat = "";
+				}
+				String auth_detail = hm.get("auth_detail").toString();
+				if(!(auth_detail != null && auth_detail.length() > 0 )){
+					auth_detail = "";
+				}
+				String time_cptn = hm.get("time_cptn").toString();
+				if(!(time_cptn != null && time_cptn.length() > 0 )){
+					time_cptn = "";
+				}
+
+				
+				if(!(time_cptn_update.equals(hm.get("time_cptn").toString())))
+                                {
+ 
+				sql = " UPDATE NewsWeb.TOI SET image = ? , cat = ? , data = ?, auth_detail=? , time_cptn = ? where id = ? ";		
+
+				System.out.println("UPDATE--> "+i + " "+id );
+
+				//PreparedStatement pstmt
+				statement = jdbcConnection.prepareStatement(sql);
+				statement.setString(1, image ); 
+				statement.setString(2, cat ); 
+				statement.setString(3, data ); 
+				statement.setString(4, auth_detail ); 
+				statement.setString(5, time_cptn ); 
+				statement.setDouble(6, id); 
+				boolean rowUpdated = statement.executeUpdate() > 0;
+                                statement.close();
+                                update++;
+                                } 
+                                else {
+                                    no_change++;
+                                }
+				
+                                 } catch(Exception e){
+                                      exception_count++;
+                                    System.out.println("\n"+i + " --> "+e.toString());
+                                }
+
+			} else {
+                                try{
+                                sql = "INSERT INTO `NewsWeb`.`TOI` (`articlelink`, `heading1`, `image`, `data`, `cat`, `auth_detail`, `time_cptn`, `time_date` , `timestamp`) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP )";
+				//		+ " ON DUPLICATE KEY UPDATE articlelink ='"+hm.get("articlelink").toString()+"', heading1 ='"+hm.get("heading1").toString()+"' ";
+
+				System.out.println("INSERT--> "+i + " "+id + " " );
+
+				statement = jdbcConnection.prepareStatement(sql);
+				statement.setString(1, hm.get("articlelink").toString());
+				statement.setString(2,hm.get("heading1").toString());
+				String s = hm.get("image").toString();
+				if(s != null && s.length() > 2 ){
+					statement.setString(3, s);
+				} else {
+					statement.setString(3, null);
+				}
+				statement.setString(4, hm.get("data").toString());
+				s = hm.get("cat").toString();
+				if(s != null && s.length() > 0 ){
+					statement.setString(5, s);
+				} else {
+					statement.setString(5, "");
+				}
+				s = hm.get("auth_detail").toString();
+				if(s != null && s.length() > 0 ){
+					statement.setString(6, s);
+				} else {
+					statement.setString(6, "");
+				}
+				s = hm.get("time_cptn").toString();
+				if(s != null && s.length() > 0 ){
+					statement.setString(7, s);
+				} else {
+					statement.setString(7, "");
+				}
+
+                               statement.setString(8, hm.get("time_date").toString() ); 
+				
+				boolean rowInserted = statement.executeUpdate() > 0;
+				statement.close();
+                                new_insert++;
+                                } catch(Exception e){
+                                    exception_count++;
+                                    System.out.println("\n"+i + " --> "+e.toString());
+                                }
+			}
+
+
+		}
+
+		disconnect();
+                
+                 result.put("news_get_size",aList.size());
+                 result.put("new_insert",new_insert);
+                 result.put("update",update);
+                 result.put("no_change",no_change);
+                 result.put("exception_count",exception_count);
+                 
+                 return result;
+	}
+
 
 
 }

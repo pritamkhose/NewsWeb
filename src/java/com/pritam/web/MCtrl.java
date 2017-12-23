@@ -9,7 +9,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.pritam.dao.ToiDAO;
 import static com.pritam.web.AppConstant.*;
-import com.pritam.web.model.NewsList;
+import com.pritam.model.NewsList;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -86,8 +86,19 @@ public class MCtrl extends HttpServlet {
                     }
                 }
                 break;
+                case "update":{    
+                     hmData.put("ErrorID", 1);
+                     ArrayList<String> sample = new ArrayList<>();
+                     TOIWebsiteReader toiread= new TOIWebsiteReader();
+                     ArrayList<String> temp = toiread.getLink();
+                     hmData.put("report", toiread.collectAllDetails(temp));
+                     hmData.put("total_link_size", temp.size());
+                     hmData.put("total_link", temp);
+                     
+                }
+                break;
                 case "sample":{   
-                     hmData.put("ErrorID", 0);
+                     hmData.put("ErrorID", 10);
                      ArrayList<String> sample = new ArrayList<>();
                      sample.add(webURL3 + "MCtrl");
                      sample.add(webURL3 + "MCtrl?req=details&id=1.0");
@@ -95,6 +106,7 @@ public class MCtrl extends HttpServlet {
                      sample.add(webURL3 + "MCtrl?req=list&search=pune");
                      sample.add(webURL3 + "MCtrl?req=cat");
                      sample.add(webURL3 + "MCtrl?req=list&cat=BUSINESS-INDIA-BUSINESS");
+                     sample.add(webURL3 + "MCtrl?req=update");
                      hmData.put("Sample", sample);
                 }
                 break;
