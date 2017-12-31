@@ -14,7 +14,8 @@
     <body>
        <%
          // New location to be redirected
-         String site = new String("http://localhost:8880/NewsWeb/News");
+//         String site = new String("http://localhost:8880/NewsWeb/News");
+        String site = new String("http://newsweb.us-east-1.elasticbeanstalk.com/News");
          response.setStatus(response.SC_MOVED_TEMPORARILY);
          response.setHeader("Location", site); 
       %>

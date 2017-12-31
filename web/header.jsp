@@ -32,12 +32,12 @@
             </button>
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="/NewsWeb/News">News.com</a>
+                    <a class="navbar-brand" href="/News">News.com</a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="/NewsWeb/News">Latest News</a></li>
-                                                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="/NewsWeb/News"  id="textWhite" >All <span class="caret"></span></a>
+                        <li class="active"><a href="/News">Latest News</a></li>
+                                                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="/News"  id="textWhite" >All <span class="caret"></span></a>
                             <ul class="dropdown-menu" id="textBLACK">
                             <li><a href="News?cat=BUSINESS-INDIA-BUSINESS"  id="textBLUE">BUSINESS-INDIA-BUSINESS</a></li>
                             <li><a href="News?cat=BUSINESS-INTERNATIONAL-BUSINESS"  id="textBLUE">BUSINESS-INTERNATIONAL-BUSINESS</a></li>
@@ -64,7 +64,7 @@
                             <li><a href="News?cat=SYNTHETIC-BEDDING-CAN-CAUSE-ASTHMA"  id="textBLUE">SYNTHETIC-BEDDING-CAN-CAUSE-ASTHMA</a></li>
                             </ul>
                         </li>
-                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="/NewsWeb/News"  id="textWhite" >City <span class="caret"></span></a>
+                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="/News"  id="textWhite" >City <span class="caret"></span></a>
                             <ul class="dropdown-menu" id="textBLACK">
                             <li><a href="News?cat=CITY-AHMEDABAD"  id="textBLUE">AHMEDABAD</a></li>
                             <li><a href="News?cat=CITY-ALLAHABAD"  id="textBLUE">ALLAHABAD</a></li>
@@ -98,7 +98,7 @@
                             <li><a href="News?cat=CITY-VARANASI"  id="textBLUE">VARANASI</a></li>
                             </ul>
                         </li>
-                       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="/NewsWeb/News"  id="textWhite" >SPORTS <span class="caret"></span></a>
+                       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="/News"  id="textWhite" >SPORTS <span class="caret"></span></a>
                             <ul class="dropdown-menu" id="textBLACK">
                              <li><a href="News?cat=SPORTS-BADMINTON"  id="textBLUE">BADMINTON</a></li>
                             <li><a href="News?cat=SPORTS-BOXING"  id="textBLUE">BOXING</a></li>
@@ -110,7 +110,7 @@
                             <li><a href="News?cat=SPORTS-TENNIS"  id="textBLUE">TENNIS</a></li>
                             </ul>
                         </li>
-                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="/NewsWeb/News"  id="textWhite" >WORLD <span class="caret"></span></a>
+                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="/News"  id="textWhite" >WORLD <span class="caret"></span></a>
                             <ul class="dropdown-menu" id="textBLACK">
 			<li><a href="News?cat=WORLD-CHINA"  id="textBLUE">CHINA</a></li>
                             <li><a href="News?cat=WORLD-EUROPE"  id="textBLUE">EUROPE</a></li>

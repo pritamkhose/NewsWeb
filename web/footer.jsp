@@ -10,7 +10,7 @@
     </head>
     <body>
     <center>
-        <p>© Copyright 2011-2017 <a href="/NewsWeb/News"> News.com</a> </p>
+        <p>© Copyright 2011-2017 <a href="/News"> News.com</a> </p>
     </center>
 </body>
 </html>
