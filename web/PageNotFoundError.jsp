@@ -11,22 +11,13 @@
         </script>
     </head>
     <body >
-
         <%@ include file = "header.jsp" %>
         <br/><br/>
         <center>
-            <h2>Error Found</h2>
+            <h4>Page Not Found</h4>
         </center>
-        <center>
-            <h4><%=exception.getMessage()%><br/> </h4>
-            <h4><%=exception.getStackTrace()%><br/> </h4>
-            <br/> <br/>
-            <button onclick="goBack()">Go Back</button>
-
-        </center>	
-            
-            <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
         <%@ include file = "footer.jsp" %>
-
+       
     </body>
 </html>

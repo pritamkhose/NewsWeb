@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+
+  <div ng-app="myApp" ng-controller="galaxyCtrlA"> 
+    <p>The $http service requests responses from the the server on the "Zone of Avoidance" galaxies, and the response are set as the values of the "message" and "pictures" variables.</p>
+    <p>Welcome message from the "Zone of Avoidance" galaxies is:</p>
+       <h1>{{ message }}</h1>
+
+    <p>The pictures from the "Zone of Avoidance" are:</p>
+     <ul>
+      <br>
+      <li ng-repeat="p in pictures">
+        <img src="{{ p.image }}" alt="{{ p.image }}" width="60%">
+      </li>
+    </ul>
+  </div>
+
+  <script>
+  var app = angular.module('myApp', []);
+
+  app.controller('galaxyCtrlA', function($scope, $http) {
+    $http.get("http://www.bogotobogo.com/AngularJS/files/httpRequest/welcome.html")
+    .then(function(response) {
+        $scope.message = response.data;
+    });
+    $http.get("http://www.bogotobogo.com/AngularJS/files/httpRequest/picture-list.json")
+    .success(function(response) {
+       $scope.pictures = response;
+    });
+  });
+
+  </script>
+
+</body>
+</html>;

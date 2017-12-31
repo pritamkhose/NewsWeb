@@ -10,6 +10,7 @@ import static com.pritam.web.AppConstant.*;
 import com.pritam.model.NewsList;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -30,24 +31,40 @@ public class AppCtrl extends HttpServlet {
         try {
             ToiDAO toiDAO = new ToiDAO();
     
-            String search = null, cat= null;
+            String search = null, cat= null, id = null;
             try {
             search = request.getParameter("search");
             } catch (Exception e) {
                 search = null;
             }
 
-            cat = request.getRequestURL().toString().replaceAll("Select Category", "")
-                   .replaceAll(webURL1, "").replaceAll(webURL2, "").replaceAll(webURL3, ""); 
-            if(cat.length() == 0){
+//            cat = request.getRequestURL().toString().replaceAll("Select Category", "")
+//                   .replaceAll(webURL1, "").replaceAll(webURL2, "").replaceAll(webURL3, "");            
+            try {
+            cat = request.getParameter("cat");
+             if(cat.length() == 0){
                 cat= null;
             }
+            } catch (Exception e) {
+                cat = null;
+            }
             
-            String url = request.getRequestURL().toString().replaceAll(webURL1, "").replaceAll(webURL2, "").replaceAll(webURL3, "");
-            switch (url) {
-               case "Edit":{
-                    //System.out.println("Edit -->"+ url + " "+ request.getParameter("id") );
-                    List<NewsList> list = toiDAO.detailsTOIWeb(request.getParameter("id"));
+            try {
+            id = request.getParameter("id");
+             if(id.length() == 0){
+                id= null;
+            }
+            } catch (Exception e) {
+                id = null;
+            }
+            
+//            String url = request.getRequestURL().toString().replaceAll(webURL1, "").replaceAll(webURL2, "").replaceAll(webURL3, "");
+//            switch (url) 
+//            {
+//               case "Edit":
+               if(id != null){
+                    System.out.println("Edit -->"+ request.getRequestURL().toString() + " "+ request.getParameter("id") );
+                    List<NewsList> list = toiDAO.detailsTOIWeb(id);
                     if(list != null && list.size() == 1){
                         request.setAttribute("list", list);
                         RequestDispatcher dispatcher = request.getRequestDispatcher("toidetails.jsp");
@@ -57,8 +74,10 @@ public class AppCtrl extends HttpServlet {
                     }
                    
                     }
-                    break;
-                 default: {
+//                    break;
+//                 default: 
+                 else
+                 {
                     // Home Page
                     List<NewsList> list = toiDAO.listCATTOIWeb(search,cat);
                     if(cat != null && cat.length() > 0){
@@ -72,8 +91,8 @@ public class AppCtrl extends HttpServlet {
                     RequestDispatcher dispatcher = request.getRequestDispatcher("toilist.jsp");
                     dispatcher.forward(request, response);
                 }
-                break;
-            }
+//                break;
+//            }
            
 
         } catch(Exception e){

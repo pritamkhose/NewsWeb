@@ -30,7 +30,7 @@
                                 <br/>
                             </div>
                             <div class="w3-container">
-                                <img style='object-fit: contain' src="${item.image}" onclick="changedata(${item.image});" class="img-responsive" alt="https://s3.amazonaws.com/elasticbeanstalk-us-east-1-623485753983/img/No-image-found.jpg" >
+                                <img style='object-fit: contain' src="${item.image}" onclick="changedata(${item.image});" class="img-responsive" onerror="this.src='https://s3.amazonaws.com/elasticbeanstalk-us-east-1-623485753983/img/No-image-found.jpg'" alt="No Image Found" >
                             </div>
                              <div class="w3-container">
                                  <br/>

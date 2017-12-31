@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>JSON & AJAX</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="Handlebars_css.css">
+    </head>
+    <body>
+       <h1>Handlebars Tutorial</h1>
+        <a href="https://www.youtube.com/watch?v=wSNa5b1mS5Y&list=PLpcSpRrAaOarfQTVO9SynUNmbz9yUgvkK&index=9">Visit Source code tutorial</a>
+       <div class="page-wrap">
+  
+        <div id="pets-container"></div>
+       </div>
+        
+        <script id="petsTemplate" type="text/x-handlebars-template">
+            {{#each pets}}
+              <div class="pet">
+                <div class="photo-column">
+                  <img src="{{photo}}">
+                </div>
+
+                <div class="info-column">
+                  <h2>{{name}} <span class="species">({{species}})</span></h2>
+
+                  <p>Age: {{calculateAge birthYear}}</p>
+
+                  {{#if favFoods}}
+                  <h4 class="headline-bar">Favorite Foods</h4>
+                  <ul class="favorite-foods">
+                    {{#each favFoods}}
+                      <li>{{{this}}}</li>
+                    {{/each}}
+                  </ul>
+                  {{/if}}
+
+                </div>
+              </div>
+            {{/each}}
+        </script>
+        
+        <script src="handlebars-v4.0.11.js"> </script>
+        <script src="Handlebars_JS.js"> </script>
+        
+        
+
+    </body>
+</html>

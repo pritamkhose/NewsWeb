@@ -6,7 +6,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>AppCtrl</servlet-name>
-        <url-pattern>/</url-pattern>
+        <url-pattern>/News</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>MCtrl</servlet-name>
@@ -17,10 +17,15 @@
         <url-pattern>/MCtrl</url-pattern>
     </servlet-mapping>
     
-<!--        <error-page>
+    <error-page>
+    <error-code>404</error-code>
+    <location>/PageNotFoundError.jsp</location>
+    </error-page>
+    <error-page>
         <exception-type>java.lang.Exception</exception-type>
         <location>/Error.jsp</location>
-    </error-page>-->
+    </error-page>
+    
     <session-config>
         <session-timeout>
             30
