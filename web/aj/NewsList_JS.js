@@ -5,8 +5,8 @@
  */
 
 var ourRequest = new XMLHttpRequest();
-//ourRequest.open('GET', 'http://newsweb.us-east-1.elasticbeanstalk.com/MCtrl?req=list&search=');
-ourRequest.open('GET', 'http://localhost:8880/NewsWeb/MCtrl?req=list&search=');
+ourRequest.open('GET', 'http://newsweb.us-east-1.elasticbeanstalk.com/MCtrl?req=list&search=');
+//ourRequest.open('GET', 'http://localhost:8880/NewsWeb/MCtrl?req=list&search=');
 ourRequest.onload = function() {
   if (ourRequest.status >= 200 && ourRequest.status < 400) {
     var data = JSON.parse(ourRequest.responseText);

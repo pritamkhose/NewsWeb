@@ -4,10 +4,12 @@ public class AppConstant {
 
     public static String jdbcClass = "com.mysql.jdbc.Driver";
     public static String dbName = "NewsWeb";
+    public static String dbName1 = "NewsWeb";
 
 //    public static String jdbcURL = "jdbc:mysql://localhost:3306/"+dbName;
 //    public static String jdbcUsername = "root";
 //    public static String jdbcPassword = "root"; 
+    
     
    public static String jdbcURL = "jdbc:mysql://webserver.ckczvbrr9h31.us-east-1.rds.amazonaws.com:3306/"+dbName;
    public static String jdbcUsername = "pritam";
