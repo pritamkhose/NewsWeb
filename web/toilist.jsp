@@ -70,7 +70,7 @@
                                 <p><b>${item.data}</b></p>
                                 <p ><font color="black"></font></p>
 <!--                                <p align="right"><font color="blue">${item.cat}  <i>${item.time_cptn}</i></font></p>-->
-                            <p align="right"><font color="blue"<i>${item.time_cptn}</i></font></p>
+                            <p align="right"><font color="blue"><i>${item.time_cptn}</i></font></p>
                             </div>
                         </div>
                     </div>
